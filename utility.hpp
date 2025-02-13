@@ -1582,7 +1582,7 @@ inline void rocblas_init_sin(
     for(size_t i_batch = 0; i_batch < batch_count; i_batch++)
         for(size_t i = 0; i < M; ++i)
             for(size_t j = 0; j < N; ++j)
-                A[i + j * lda + i_batch * stride] = T(sin(i + j * lda + i_batch * stride));
+                A[i + j * lda + i_batch * stride] = T(sin(i + j * M + i_batch * M * N));
 }
 
 // Initialize matrix so adjacent entries have alternating sign.
@@ -1612,7 +1612,7 @@ inline void rocblas_init_cos(
     for(size_t i_batch = 0; i_batch < batch_count; i_batch++)
         for(size_t i = 0; i < M; ++i)
             for(size_t j = 0; j < N; ++j)
-                A[i + j * lda + i_batch * stride] = T(cos(i + j * lda + i_batch * stride));
+                A[i + j * lda + i_batch * stride] = T(cos(i + j * M + i_batch * M * N));
 }
 
 /*! \brief  symmetric matrix initialization: */
